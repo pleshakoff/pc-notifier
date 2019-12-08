@@ -1,0 +1,9 @@
+server:
+  port : 8083
+spring:
+  application.name: pc-notifier
+  hateoas:
+    use-hal-as-default-json-media-type: false
+  data:
+    rest:
+      detection-strategy: annotated
