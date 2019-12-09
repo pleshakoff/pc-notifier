@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping(value = "/send",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 @Api(tags="Notifier")
@@ -24,12 +22,12 @@ public class NotificationController {
 
     @PostMapping("/group")
     @ApiOperation(value = "Send notification")
-    public NotificationDto create(@Valid @RequestBody NotificationDto notificationDto,
-                                  BindingResult bindingResult) throws BindException {
+    public void create(@RequestBody NotificationInDto notificationDto,
+                       BindingResult bindingResult) throws BindException {
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
-        return notificationService.sendForGroup(notificationDto);
+        notificationService.forwardForGroup(notificationDto);
     }
 
 

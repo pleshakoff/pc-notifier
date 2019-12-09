@@ -1,7 +1,9 @@
 package com.parcom.notifier;
 
+import com.parcom.notifier.agents.AgentProps;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
@@ -21,6 +23,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @EnableSwagger2WebMvc
 @Import(SpringDataRestConfiguration.class)
+@EnableConfigurationProperties(AgentProps.class)
 public class NotifierApplication {
 
 	public static void main(String[] args) {

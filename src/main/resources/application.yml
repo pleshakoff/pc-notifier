@@ -1,5 +1,22 @@
 server:
   port : 8083
+
+parcom:
+  services:
+    classroom:
+      host: 127.0.0.1
+      port: 8080
+  notifier:
+    agents:
+      -
+        name: email
+        host: 127.0.0.1
+        port: 8084
+      -
+        name: push
+        host: 127.0.0.1
+        port: 8085
+
 spring:
   application.name: pc-notifier
   hateoas:
