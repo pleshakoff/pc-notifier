@@ -19,7 +19,7 @@ public class NotificationService {
 
         log.info("Forward notification. Type \"{}\", id {} ",notificationDto.getNotificationType(),notificationDto.getIdObjectSender() );
         userService.allInGroup().forEach(user -> {
-                    log.info("For user \"{} {} {}\" ", user.getId(), user.getFirstName(),user.getFamilyName());
+                    log.info("For user: \"{} {} {}\" ", user.getId(), user.getFirstName(),user.getFamilyName());
 
                     NotificationAgentDto notificationAgentDto = new NotificationAgentDto(notificationDto.getNotificationType(),
                                                                                          notificationDto.getTitle(),

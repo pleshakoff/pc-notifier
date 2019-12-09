@@ -4,13 +4,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
 @Getter
 @Setter
 class Agent {
 
-    private final String name;
-    private final String host;
-    private final String port;
+    private String name;
+    private String host;
+    private String port;
 
 }

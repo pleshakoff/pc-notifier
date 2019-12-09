@@ -25,7 +25,7 @@ public class AgentService {
 
     private void send(Agent agent, NotificationAgentDto notificationAgentDto)
     {
-        log.info("Send to agent '{}' {}:{}",agent.getName(),agent.getHost(),agent.getPort());
+        log.info("Send to agent: \"'{}' {}:{}\"",agent.getName(),agent.getHost(),agent.getPort());
     }
 }
 
