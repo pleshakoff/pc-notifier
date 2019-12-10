@@ -1,4 +1,4 @@
-package com.parcom.notifier;
+package com.parcom.notifier.utils;
 
 import com.parcom.security_client.UserUtils;
 import org.springframework.http.HttpEntity;
@@ -18,6 +18,9 @@ public class RestTemplateUtils {
     }
 
     public  static HttpEntity entity = new HttpEntity(getHttpHeaders());
+
+    public static  String scheme = "http";
+
 
 
 }

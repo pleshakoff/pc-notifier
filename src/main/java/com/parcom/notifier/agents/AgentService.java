@@ -1,24 +1,15 @@
 package com.parcom.notifier.agents;
 
-import com.parcom.notifier.RestTemplateUtils;
-import lombok.Data;
+import com.parcom.notifier.utils.RestTemplateUtils;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Service
@@ -37,7 +28,7 @@ public class AgentService {
     {
         log.info("Send to agent: \"'{}' {}:{}\"",agent.getName(),agent.getHost(),agent.getPort());
 
-        URI uri = UriComponentsBuilder.newInstance().scheme("http").host(agent.getHost()).port(agent.getPort()).path("/send/").build().toUri();
+        URI uri = UriComponentsBuilder.newInstance().scheme(RestTemplateUtils.scheme).host(agent.getHost()).port(agent.getPort()).path("/send/").build().toUri();
 
         HttpEntity<NotificationAgentDto> requestBody = new HttpEntity<>(notificationAgentDto, RestTemplateUtils.getHttpHeaders());
         try {
