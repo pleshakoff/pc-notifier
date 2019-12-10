@@ -4,17 +4,17 @@ server:
 parcom:
   services:
     classroom:
-      host: 127.0.0.1
+      host: pc-classroom
       port: 8080
   notifier:
     agents:
       -
         name: email
-        host: 127.0.0.1
+        host: pc-notifier-agent-email
         port: 8084
       -
         name: push
-        host: 127.0.0.1
+        host: pc-notifier-agent-push
         port: 8085
 
 spring:
