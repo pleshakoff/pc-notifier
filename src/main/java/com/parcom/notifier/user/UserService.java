@@ -36,7 +36,7 @@ public class UserService {
                 host(classRoomHost).
                 port(classRoomPort).path("/users/all").build().toUri();
 
-        ResponseEntity<User[]> userResponseEntity =restTemplate.exchange(uri, HttpMethod.GET, RestTemplateUtils.entity, User[].class);
+        ResponseEntity<User[]> userResponseEntity =restTemplate.exchange(uri, HttpMethod.GET, RestTemplateUtils.getHttpEntity(), User[].class);
 
         if (userResponseEntity.getStatusCode()== HttpStatus.OK) {
             User[] body = userResponseEntity.getBody();
