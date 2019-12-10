@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.ParameterBuilder;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 @EnableSwagger2WebMvc
 @Import(SpringDataRestConfiguration.class)
 @EnableConfigurationProperties(AgentProps.class)
+@EnableAsync
 public class NotifierApplication {
 
 	public static void main(String[] args) {

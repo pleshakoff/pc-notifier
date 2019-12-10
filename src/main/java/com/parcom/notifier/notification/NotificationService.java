@@ -5,6 +5,7 @@ import com.parcom.notifier.agents.NotificationAgentDto;
 import com.parcom.notifier.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,7 @@ public class NotificationService {
     private final UserService userService;
     private final AgentService agentService;
 
+    @Async
     void forwardForGroup(NotificationInDto notificationDto) {
 
         log.info("Forward notification. Type \"{}\", id {} ",notificationDto.getNotificationType(),notificationDto.getIdObjectSender() );

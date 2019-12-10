@@ -21,14 +21,38 @@ public class NotificationController {
     private  final  NotificationService notificationService;
 
     @PostMapping("/group")
-    @ApiOperation(value = "Send notification")
-    public void create(@RequestBody NotificationInDto notificationDto,
-                       BindingResult bindingResult) throws BindException {
+    @ApiOperation(value = "Send notification to all users in the group")
+    public String  sendToGroup(@RequestBody NotificationInDto notificationDto,
+                            BindingResult bindingResult) throws BindException {
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
         notificationService.forwardForGroup(notificationDto);
+        return "{\"result\": \"done\"}";
     }
+
+
+    @PostMapping("/user")
+    @ApiOperation(value = "Send notification to user")
+    public String sendToUser(@RequestBody NotificationInDto notificationDto,
+                       BindingResult bindingResult) throws BindException {
+        if (bindingResult.hasErrors()) {
+            throw new BindException(bindingResult);
+        }
+        throw  new UnsupportedOperationException();
+    }
+
+    @PostMapping("/custom")
+    @ApiOperation(value = "Send notification to custom list of users")
+    public String sendToCustom(@RequestBody NotificationInDto notificationDto,
+                           BindingResult bindingResult) throws BindException {
+        if (bindingResult.hasErrors()) {
+            throw new BindException(bindingResult);
+        }
+        throw  new UnsupportedOperationException();
+    }
+
+
 
 
 }
