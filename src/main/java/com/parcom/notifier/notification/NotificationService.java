@@ -31,7 +31,9 @@ public class NotificationService {
                                                                                          user.getId());
 
                     agentService.forwardToAgents(notificationAgentDto);
+                    
                 }
+                
         );
     }
 
