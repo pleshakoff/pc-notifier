@@ -49,10 +49,7 @@ public class NotifierApplication {
 				.build();
 	}
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
+
 
 }
 

@@ -1,6 +1,6 @@
 package com.parcom.notifier.agents;
 
-import com.parcom.notifier.utils.RestTemplateUtils;
+import com.parcom.rest_template.RestTemplateUtils;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
