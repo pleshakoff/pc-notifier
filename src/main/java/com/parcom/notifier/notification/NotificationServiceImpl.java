@@ -17,7 +17,6 @@ class NotificationServiceImpl implements NotificationService {
     private final AgentService agentService;
 
     @Override
-    @Async
     public void forwardForGroup(NotificationInDto notificationDto) {
 
         log.info("Forward notification. Type \"{}\", id {} ",notificationDto.getNotificationType(),notificationDto.getIdObjectSender() );

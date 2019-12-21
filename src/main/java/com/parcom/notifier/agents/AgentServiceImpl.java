@@ -23,7 +23,14 @@ public class AgentServiceImpl implements AgentService {
     private void send(Agent agent, NotificationAgentDto notificationAgentDto)
     {
         log.info("Send to agent: \"{}\"",agent.getName());
-        network.callPost(agent.getName(),String.class,notificationAgentDto,"send");
+        try {
+
+            network.callPost(agent.getName(),String.class,notificationAgentDto,"send");
+        }
+        catch (Exception e)
+        {
+            log.error("Forward to Agent error",e);
+        }
     }
 }
 
