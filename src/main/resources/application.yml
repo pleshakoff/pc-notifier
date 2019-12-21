@@ -1,21 +1,33 @@
 server:
   port : 8083
+  servlet:
+    context-path: /api/${parcom.api.version}
 
 parcom:
+  api:
+    version: v1
   services:
-    classroom:
+    -
+      name: classroom
       host: pc-classroom
       port: 8080
+      version: v1
+    -
+      name: notifier-agent-email
+      host: pc-notifier-agent-email
+      port: 8084
+      version: v1
+    -
+      name: notifier-agent-push
+      host: pc-notifier-agent-push
+      port: 8085
+      version: v1
   notifier:
     agents:
       -
-        name: email
-        host: pc-notifier-agent-email
-        port: 8084
+        name: notifier-agent-email
       -
-        name: push
-        host: pc-notifier-agent-push
-        port: 8085
+        name: notifier-agent-push
 
 spring:
   application.name: pc-notifier

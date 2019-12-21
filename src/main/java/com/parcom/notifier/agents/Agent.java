@@ -9,7 +9,5 @@ import lombok.Setter;
 class Agent {
 
     private String name;
-    private String host;
-    private String port;
 
 }

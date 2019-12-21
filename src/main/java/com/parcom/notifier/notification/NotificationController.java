@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class NotificationController {
 
-    private  final  NotificationService notificationService;
+    private  final NotificationService notificationService;
 
     @PostMapping("/group")
     @ApiOperation(value = "Send notification to all users in the group")
