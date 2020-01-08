@@ -18,7 +18,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Arrays;
 
 @SpringBootApplication
-@EnableSwagger2
 @EnableConfigurationProperties(AgentProps.class)
 @EnableAsync
 public class NotifierApplication {
@@ -26,25 +25,6 @@ public class NotifierApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NotifierApplication.class, args);
 	}
-
-
-	@Bean
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).globalOperationParameters(
-				Arrays.asList(new ParameterBuilder()
-						.name("X-Auth-Token")
-						.description("userSecurityDto session token")
-						.modelRef(new ModelRef("string"))
-						.parameterType("header")
-						.required(false)
-						.build()))
-				.select()
-				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-				.paths(PathSelectors.any())
-				.build();
-	}
-
-
 
 }
 

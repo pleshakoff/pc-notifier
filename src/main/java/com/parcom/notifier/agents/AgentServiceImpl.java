@@ -24,7 +24,6 @@ public class AgentServiceImpl implements AgentService {
     {
         log.info("Send to agent: \"{}\"",agent.getName());
         try {
-
             network.callPost(agent.getName(),String.class,notificationAgentDto,"send");
         }
         catch (Exception e)
