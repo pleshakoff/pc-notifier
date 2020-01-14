@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
-//@AllArgsConstructor
 @Setter
 public class NotificationDto {
 

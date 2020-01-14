@@ -56,7 +56,7 @@ public class KafkaConfig {
 
 
     @Bean
-    public ProducerFactory<String, NotificationAgentDto> notificationDtoProducerFactory() {
+    public ProducerFactory<String, NotificationAgentDto> notificationDtoAgentProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -72,7 +72,7 @@ public class KafkaConfig {
 
     @Bean
     public KafkaTemplate<String, NotificationAgentDto> notificationDtoKafkaTemplate() {
-        return new KafkaTemplate<>(notificationDtoProducerFactory());
+        return new KafkaTemplate<>(notificationDtoAgentProducerFactory());
     }
 
     @Bean
