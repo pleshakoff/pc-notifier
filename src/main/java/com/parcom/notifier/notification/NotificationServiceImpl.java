@@ -2,7 +2,7 @@ package com.parcom.notifier.notification;
 
 import com.parcom.asyncdto.NotificationInDto;
 import com.parcom.notifier.agents.AgentService;
-import com.parcom.notifier.agents.NotificationAgentDto;
+import com.parcom.asyncdto.NotificationAgentDto;
 import com.parcom.notifier.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,14 +33,11 @@ class NotificationServiceImpl implements NotificationService {
                 toCustom(notificationDto);
                 break;
         }
-
-
-        toGroup(notificationDto);
-    }
+   }
 
     private void toGroup(NotificationInDto notificationDto) {
         userService.allInGroup().forEach(user -> {
-                    log.info("For user: \"{} {} {}\" ", user.getId(), user.getFirstName(), user.getFamilyName());
+                    log.info("Get user: \"{} {} {}\" ", user.getId(), user.getFirstName(), user.getFamilyName());
 
                     NotificationAgentDto notificationAgentDto = new NotificationAgentDto(notificationDto.getNotificationType(),
                             notificationDto.getTitle(),

@@ -1,17 +1,21 @@
 package com.parcom.notifier;
 
 
+import com.parcom.asyncdto.NotificationAgentDto;
 import com.parcom.asyncdto.NotificationInDto;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +29,10 @@ public class KafkaConfig {
 
     @Value("${parcom.kafka.topic.notification}")
     private String notificationTopic;
+
+    @Value("${parcom.kafka.topic.notificationAgent}")
+    private String notificationAgentTopic;
+
 
     @Value("${parcom.kafka.group.notifier}")
     private String notifierGroup;
@@ -41,25 +49,31 @@ public class KafkaConfig {
         return new NewTopic(notificationTopic, 1, (short) 1);
     }
 
-//    @Bean
-//    public ProducerFactory<String, NotificationInDto> notificationDtoProducerFactory() {
-//        Map<String, Object> configProps = new HashMap<>();
-//        configProps.put(
-//                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-//                bootstrapAddress);
-//        configProps.put(
-//                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
-//                StringSerializer.class);
-//        configProps.put(
-//                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-//                JsonSerializer.class);
-//        return new DefaultKafkaProducerFactory<>(configProps);
-//    }
+    @Bean
+    public NewTopic topic2() {
+        return new NewTopic(notificationAgentTopic, 1, (short) 1);
+    }
 
-//    @Bean
-//    public KafkaTemplate<String, NotificationDto> notificationDtoKafkaTemplate() {
-//        return new KafkaTemplate<>(notificationDtoProducerFactory());
-//    }
+
+    @Bean
+    public ProducerFactory<String, NotificationAgentDto> notificationDtoProducerFactory() {
+        Map<String, Object> configProps = new HashMap<>();
+        configProps.put(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                bootstrapAddress);
+        configProps.put(
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                StringSerializer.class);
+        configProps.put(
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                JsonSerializer.class);
+        return new DefaultKafkaProducerFactory<>(configProps);
+    }
+
+    @Bean
+    public KafkaTemplate<String, NotificationAgentDto> notificationDtoKafkaTemplate() {
+        return new KafkaTemplate<>(notificationDtoProducerFactory());
+    }
 
     @Bean
     public ConsumerFactory<String, NotificationInDto> consumerFactory() {

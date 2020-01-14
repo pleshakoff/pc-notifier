@@ -8,6 +8,7 @@ parcom:
     bootstrap-address: pc-kafka:9092
     topic:
       notification: notification
+      notificationAgent: notificationAgent
     group:
       notifier: notifier
 
@@ -20,22 +21,6 @@ parcom:
       host: pc-classroom
       port: 8080
       version: v1
-    -
-      name: notifier-agent-email
-      host: pc-notifier-agent-email
-      port: 8084
-      version: v1
-    -
-      name: notifier-agent-push
-      host: pc-notifier-agent-push
-      port: 8085
-      version: v1
-  notifier:
-    agents:
-      -
-        name: notifier-agent-email
-      -
-        name: notifier-agent-push
 
 spring:
   application.name: pc-notifier

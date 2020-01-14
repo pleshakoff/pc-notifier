@@ -1,4 +1,4 @@
-package com.parcom.notifier.agents;
+package com.parcom.asyncdto;
 
 import com.parcom.notifier.notification.NotificationType;
 import lombok.Getter;
@@ -24,7 +24,7 @@ public class NotificationAgentDto  {
     private final Long idUserSender;
 
     @NotNull
-    private final Long idUserReciever;
+    private final Long idUserReceiver;
 
 
 }
