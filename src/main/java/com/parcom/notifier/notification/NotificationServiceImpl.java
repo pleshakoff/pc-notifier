@@ -1,15 +1,12 @@
 package com.parcom.notifier.notification;
 
+import com.parcom.asyncdto.NotificationInDto;
 import com.parcom.notifier.agents.AgentService;
 import com.parcom.notifier.agents.NotificationAgentDto;
 import com.parcom.notifier.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import static com.parcom.notifier.notification.NotificationReceiverType.GROUP;
 
 @Service
 @RequiredArgsConstructor

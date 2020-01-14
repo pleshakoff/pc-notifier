@@ -1,6 +1,7 @@
 package com.parcom.notifier.notification;
 
 
+import com.parcom.asyncdto.NotificationInDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;

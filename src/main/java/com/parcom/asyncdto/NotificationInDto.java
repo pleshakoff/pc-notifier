@@ -1,5 +1,7 @@
-package com.parcom.notifier.notification;
+package com.parcom.asyncdto;
 
+import com.parcom.notifier.notification.NotificationReceiverType;
+import com.parcom.notifier.notification.NotificationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,10 +16,10 @@ import java.util.List;
 public class NotificationInDto {
 
     @NotNull
-    private  NotificationType notificationType;
+    private NotificationType notificationType;
 
     @NotNull
-    private  NotificationReceiverType notificationReceiverType;
+    private NotificationReceiverType notificationReceiverType;
 
 
     @NotNull
