@@ -1,7 +1,7 @@
 package com.parcom.notifier.notification;
 
 
-import com.parcom.asyncdto.NotificationInDto;
+import com.parcom.asyncdto.NotificationDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class NotificationController {
 
     @PostMapping("")
     @ApiOperation(value = "Send notification")
-    public String  sendToGroup(@RequestBody NotificationInDto notificationDto,
+    public String  sendToGroup(@RequestBody NotificationDto notificationDto,
                             BindingResult bindingResult) throws BindException {
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);

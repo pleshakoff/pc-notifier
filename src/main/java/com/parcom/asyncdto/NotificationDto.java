@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 //@AllArgsConstructor
 @Setter
-public class NotificationInDto {
+public class NotificationDto {
 
     @NotNull
     private NotificationType notificationType;

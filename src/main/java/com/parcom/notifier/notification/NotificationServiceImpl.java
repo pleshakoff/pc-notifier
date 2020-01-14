@@ -1,6 +1,6 @@
 package com.parcom.notifier.notification;
 
-import com.parcom.asyncdto.NotificationInDto;
+import com.parcom.asyncdto.NotificationDto;
 import com.parcom.notifier.agents.AgentService;
 import com.parcom.asyncdto.NotificationAgentDto;
 import com.parcom.notifier.user.UserService;
@@ -19,7 +19,7 @@ class NotificationServiceImpl implements NotificationService {
 
 
     @Override
-    public void forwardToAgents(NotificationInDto notificationDto) {
+    public void forwardToAgents(NotificationDto notificationDto) {
 
         log.info("Forward notification. Type \"{}\", id {} ", notificationDto.getNotificationType(), notificationDto.getIdObjectSender());
         switch (notificationDto.getNotificationReceiverType()) {
@@ -35,7 +35,7 @@ class NotificationServiceImpl implements NotificationService {
         }
    }
 
-    private void toGroup(NotificationInDto notificationDto) {
+    private void toGroup(NotificationDto notificationDto) {
         userService.allInGroup().forEach(user -> {
                     log.info("Get user: \"{} {} {}\" ", user.getId(), user.getFirstName(), user.getFamilyName());
 
@@ -54,12 +54,12 @@ class NotificationServiceImpl implements NotificationService {
     }
 
 
-    private void toUser(NotificationInDto notificationDto) {
+    private void toUser(NotificationDto notificationDto) {
         throw  new UnsupportedOperationException();
     }
 
 
-    private void toCustom(NotificationInDto notificationDto) {
+    private void toCustom(NotificationDto notificationDto) {
         throw  new UnsupportedOperationException();
     }
 

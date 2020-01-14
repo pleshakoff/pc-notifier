@@ -1,6 +1,6 @@
 package com.parcom.notifier.notification;
 
-import com.parcom.asyncdto.NotificationInDto;
+import com.parcom.asyncdto.NotificationDto;
 import com.parcom.security_client.AsyncUserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,10 +17,10 @@ class NotificationListener {
     private final NotificationService notificationService;
 
     @KafkaListener(topics = "${parcom.kafka.topic.notification}", groupId = "${parcom.kafka.group.notifier}")
-    public void listen(@Payload NotificationInDto notificationInDto, @Header("X-Auth-Token") String token) {
+    public void listen(@Payload NotificationDto notificationDto, @Header("X-Auth-Token") String token) {
         log.info("Get message from broker");
          AsyncUserUtils.authByToken(token);
-        notificationService.forwardToAgents(notificationInDto);
+        notificationService.forwardToAgents(notificationDto);
     }
 
 

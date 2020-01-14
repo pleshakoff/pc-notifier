@@ -2,7 +2,7 @@ package com.parcom.notifier;
 
 
 import com.parcom.asyncdto.NotificationAgentDto;
-import com.parcom.asyncdto.NotificationInDto;
+import com.parcom.asyncdto.NotificationDto;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -76,17 +76,17 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, NotificationInDto> consumerFactory() {
+    public ConsumerFactory<String, NotificationDto> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, notifierGroup);
-        JsonDeserializer<NotificationInDto> jsonDeserializer = new JsonDeserializer<>(NotificationInDto.class);
+        JsonDeserializer<NotificationDto> jsonDeserializer = new JsonDeserializer<>(NotificationDto.class);
         return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), jsonDeserializer);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, NotificationInDto> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, NotificationInDto> factory =
+    public ConcurrentKafkaListenerContainerFactory<String, NotificationDto> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, NotificationDto> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
