@@ -4,5 +4,8 @@ import org.springframework.scheduling.annotation.Async;
 
 public interface NotificationService {
     @Async
-    void forwardForGroup(NotificationInDto notificationDto);
+    void forwardToAgents(NotificationInDto notificationDto);
+
+
+
 }

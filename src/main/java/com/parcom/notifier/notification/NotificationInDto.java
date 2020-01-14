@@ -2,26 +2,33 @@ package com.parcom.notifier.notification;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
-@AllArgsConstructor
-class NotificationInDto {
+//@AllArgsConstructor
+@Setter
+public class NotificationInDto {
 
     @NotNull
-    private  final NotificationType notificationType;
+    private  NotificationType notificationType;
 
     @NotNull
-    private final String  title;
+    private  NotificationReceiverType notificationReceiverType;
 
-    private final String  message;
-
-    private final @NotNull String idObjectSender;
 
     @NotNull
-    private final Long idUserSender;
+    private String  title;
+
+    private String  message;
+
+    private @NotNull String idObjectSender;
+
+    @NotNull
+    private Long idUserSender;
 
     private Long idUserReceiver;
 

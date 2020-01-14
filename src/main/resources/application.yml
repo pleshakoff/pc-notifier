@@ -4,6 +4,14 @@ server:
     context-path: /api/${parcom.api.version}
 
 parcom:
+  kafka:
+    bootstrap-address: pc-kafka:9092
+    topic:
+      notification: notification
+    group:
+      notifier: notifier
+
+
   api:
     version: v1
   services:
