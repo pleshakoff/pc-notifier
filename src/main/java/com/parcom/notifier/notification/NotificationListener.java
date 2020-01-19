@@ -16,6 +16,7 @@ class NotificationListener {
 
     private final NotificationService notificationService;
 
+
     @KafkaListener(topics = "${parcom.kafka.topic.notification}", groupId = "${parcom.kafka.group.notifier}")
     public void listen(@Payload NotificationDto notificationDto, @Header("X-Auth-Token") String token) {
         log.info("Get message from broker");
